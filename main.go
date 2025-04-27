@@ -141,24 +141,26 @@ func Colour(option, color, message string) {
 func PadRight(s string, totalLength int){
 	padding := totalLength - len(s)
 	var i = 0
+	newString := s
 	if padding > 0 {
 		for i < padding {
-			s = s + " "
+			newString = newString + " "
 			i++
 		}
 	}
 
-	fmt.Printf("%s", s)
+	fmt.Printf("%s", newString)
 }
 
 func PadLeft(s string, totalLength int){
 	padding := totalLength - len(s)
 	var i = 0
+	newString := s
 	if padding > 0 {
 		for i < padding {
-			s = " " + s
+			newString = " " + newString
 			i++
 		}
 	}
-	fmt.Printf("%s", s)
+	fmt.Printf("%s", newString)
 }
