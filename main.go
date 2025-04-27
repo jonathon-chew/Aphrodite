@@ -1,6 +1,9 @@
 package aphrodite
 
-import "fmt"
+import (
+	"fmt";
+	"strings"
+)
 
 // Colour prints the message in the specified color.
 func Colour(option, color, message string) {
@@ -83,43 +86,43 @@ func Colour(option, color, message string) {
 
 	reset := "\x1b[0m"
 
-	if option == "Color" || option == "color" || option == "Colour" || option == "colour" {
+	if strings.ToLower(option) == "color" || strings.ToLower(option) == "colour" {
 		colourOption := colour[color]
 		fmt.Printf("%s%s%s\n", colourOption, message, reset)
 		return
 	}
 
-	if option == "Bold" {
+	if strings.ToLower(option) == "bold" {
 		colourOption := Bold[color]
 		fmt.Printf("%s%s%s\n", colourOption, message, reset)
 		return
 	}
 
-	if option == "Underline" {
+	if strings.ToLower(option) == "underline" {
 		colourOption := Underline[color]
 		fmt.Printf("%s%s%s\n", colourOption, message, reset)
 		return
 	}
 
-	if option == "Background" {
+	if strings.ToLower(option) == "background" {
 		colourOption := Background[color]
 		fmt.Printf("%s%s%s\n", colourOption, message, reset)
 		return
 	}
 
-	if option == "High_Intensity" {
+	if strings.ToLower(option) == "high_intensity" {
 		colourOption := High_Intensity[color]
 		fmt.Printf("%s%s%s\n", colourOption, message, reset)
 		return
 	}
 
-	if option == "Bold_High_Intensity" {
+	if strings.ToLower(option) == "bold_high_intensity" {
 		colourOption := Bold_High_Intensity[color]
 		fmt.Printf("%s%s%s\n", colourOption, message, reset)
 		return
 	}
 
-	if option == "High_Intensity_backgrounds" {
+	if strings.ToLower(option) == "high_intensity_backgrounds" {
 		colourOption := High_Intensity_backgrounds[color]
 		fmt.Printf("%s%s%s\n", colourOption, message, reset)
 		return
