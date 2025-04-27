@@ -1,4 +1,4 @@
-# 📸 aphrodite (Go)
+# 📸 Aphrodite (Go)
 
 A package for colour terminal outputs in go
 
