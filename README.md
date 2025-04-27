@@ -1,4 +1,4 @@
-# 📸 Aphrodite (Go)
+# :rainbow: Aphrodite (Go)
 
 A package for colour terminal outputs in go
 
