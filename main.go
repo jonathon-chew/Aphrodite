@@ -86,45 +86,52 @@ func Colour(option, color, message string) {
 
 	reset := "\x1b[0m"
 
-	fmt.Printf("Option: %s Colour: %s Message: %s", option, color, message)
+	fmt.Printf("Option: %s Colour: %s Message: %s\n", option, color, message)
 
 	if strings.ToLower(option) == "color" || strings.ToLower(option) == "colour" {
+    fmt.Printf("Option picked %s\n", strings.ToLower(option))
 		colourOfOptionPicked := colour[strings.ToTitle(color)]
 		fmt.Printf("%s%s%s\n", colourOfOptionPicked, message, reset)
 		return
 	}
 
 	if strings.ToLower(option) == "bold" {
+    fmt.Printf("Option picked %s\n", strings.ToLower(option))
 		colourOfOptionPicked := Bold[strings.ToTitle(color)]
 		fmt.Printf("%s%s%s\n", colourOfOptionPicked, message, reset)
 		return
 	}
 
 	if strings.ToLower(option) == "underline" {
+    fmt.Printf("Option picked %s\n", strings.ToLower(option))
 		colourOfOptionPicked := Underline[strings.ToTitle(color)]
 		fmt.Printf("%s%s%s\n", colourOfOptionPicked, message, reset)
 		return
 	}
 
 	if strings.ToLower(option) == "background" {
+    fmt.Printf("Option picked %s\n", strings.ToLower(option))
 		colourOfOptionPicked := Background[strings.ToTitle(color)]
 		fmt.Printf("%s%s%s\n", colourOfOptionPicked, message, reset)
 		return
 	}
 
 	if strings.ToLower(option) == "high_intensity" {
+    fmt.Printf("Option picked %s\n", strings.ToLower(option))
 		colourOfOptionPicked := High_Intensity[strings.ToTitle(color)]
 		fmt.Printf("%s%s%s\n", colourOfOptionPicked, message, reset)
 		return
 	}
 
 	if strings.ToLower(option) == "bold_high_intensity" {
+    fmt.Printf("Option picked %s\n", strings.ToLower(option))
 		colourOfOptionPicked := Bold_High_Intensity[strings.ToTitle(color)]
 		fmt.Printf("%s%s%s\n", colourOfOptionPicked, message, reset)
 		return
 	}
 
 	if strings.ToLower(option) == "high_intensity_backgrounds" {
+    fmt.Printf("Option picked %s\n", strings.ToLower(option))
 		colourOfOptionPicked := High_Intensity_backgrounds[strings.ToTitle(color)]
 		fmt.Printf("%s%s%s\n", colourOfOptionPicked, message, reset)
 		return
