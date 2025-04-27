@@ -30,16 +30,16 @@ A package for colour terminal outputs in go
 2. In your go source file where required:
 
   ```go
-    import github.com/jonathon-chew/aphrodite
+   import github.com/jonathon-chew/aphrodite
   ```
 
   or 
 
   ```go
-    import aphrodite "github.com/jonathon-chew/aphrodite"
+   import aphrodite "github.com/jonathon-chew/aphrodite"
   ```
 
-    Depending if you want to name it something different when calling it.
+  Depending if you want to name it something different when calling it.
 
 ## 📂 Output
 
