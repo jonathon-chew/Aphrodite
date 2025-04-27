@@ -85,54 +85,53 @@ func Colour(option, color, message string) {
 	}
 
 	reset := "\x1b[0m"
-
-	fmt.Printf("Option: %s Colour: %s Message: %s\n", option, color, message)
+	var colourChoice string = strings.ToUpper(string(color[0])) + color[1:]
 
 	if strings.ToLower(option) == "color" || strings.ToLower(option) == "colour" {
-    fmt.Printf("Option picked %s\n", strings.ToLower(option))
-		colourOfOptionPicked := colour[strings.ToTitle(color)]
+    
+		colourOfOptionPicked := colour[colourChoice]
 		fmt.Printf("%s%s%s\n", colourOfOptionPicked, message, reset)
 		return
 	}
 
 	if strings.ToLower(option) == "bold" {
-    fmt.Printf("Option picked %s\n", strings.ToLower(option))
-		colourOfOptionPicked := Bold[strings.ToTitle(color)]
+    
+		colourOfOptionPicked := Bold[colourChoice]
 		fmt.Printf("%s%s%s\n", colourOfOptionPicked, message, reset)
 		return
 	}
 
 	if strings.ToLower(option) == "underline" {
-    fmt.Printf("Option picked %s\n", strings.ToLower(option))
-		colourOfOptionPicked := Underline[strings.ToTitle(color)]
+    
+		colourOfOptionPicked := Underline[colourChoice]
 		fmt.Printf("%s%s%s\n", colourOfOptionPicked, message, reset)
 		return
 	}
 
 	if strings.ToLower(option) == "background" {
-    fmt.Printf("Option picked %s\n", strings.ToLower(option))
-		colourOfOptionPicked := Background[strings.ToTitle(color)]
+    
+		colourOfOptionPicked := Background[colourChoice]
 		fmt.Printf("%s%s%s\n", colourOfOptionPicked, message, reset)
 		return
 	}
 
 	if strings.ToLower(option) == "high_intensity" {
-    fmt.Printf("Option picked %s\n", strings.ToLower(option))
-		colourOfOptionPicked := High_Intensity[strings.ToTitle(color)]
+    
+		colourOfOptionPicked := High_Intensity[colourChoice]
 		fmt.Printf("%s%s%s\n", colourOfOptionPicked, message, reset)
 		return
 	}
 
 	if strings.ToLower(option) == "bold_high_intensity" {
-    fmt.Printf("Option picked %s\n", strings.ToLower(option))
-		colourOfOptionPicked := Bold_High_Intensity[strings.ToTitle(color)]
+    
+		colourOfOptionPicked := Bold_High_Intensity[colourChoice]
 		fmt.Printf("%s%s%s\n", colourOfOptionPicked, message, reset)
 		return
 	}
 
 	if strings.ToLower(option) == "high_intensity_backgrounds" {
-    fmt.Printf("Option picked %s\n", strings.ToLower(option))
-		colourOfOptionPicked := High_Intensity_backgrounds[strings.ToTitle(color)]
+    
+		colourOfOptionPicked := High_Intensity_backgrounds[colourChoice]
 		fmt.Printf("%s%s%s\n", colourOfOptionPicked, message, reset)
 		return
 	}
