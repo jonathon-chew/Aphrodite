@@ -112,6 +112,5 @@ func Colour(option, color, message string) {
 			fmt.Printf("%s", High_Intensity_backgrounds[color])
 		}
 
-
 }
 
