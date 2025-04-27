@@ -86,36 +86,43 @@ func Colour(option, color, message string) {
 		if option == "Color" || option == "color" || option == "Colour" || option == "colour"{
 			colourOption := colour[color]
       fmt.Printf("%s%s%s\n", colourOption, message, reset)
+      return
 		}
 		
 		if option == "Bold" {
 			colourOption := Bold[color]
       fmt.Printf("%s%s%s\n", colourOption, message, reset)
+      return
 		}
 
 		if option == "Underline" {
 			colourOption := Underline[color]
       fmt.Printf("%s%s%s\n", colourOption, message, reset)
+      return
 		}
 
 		if option == "Background" {
 			colourOption := Background[color]
       fmt.Printf("%s%s%s\n", colourOption, message, reset)
+      return
 		}
 
 	if option == "High_Intensity" {
 			colourOption := High_Intensity[color]
       fmt.Printf("%s%s%s\n", colourOption, message, reset)
+      return
 		}
 
 		if option == "Bold_High_Intensity" {
 			colourOption := Bold_High_Intensity[color]
       fmt.Printf("%s%s%s\n", colourOption, message, reset)
+      return
 		}
 
 		if option == "High_Intensity_backgrounds" {
 			colourOption := High_Intensity_backgrounds[color]
       fmt.Printf("%s%s%s\n", colourOption, message, reset)
+      return
 		}
 
 }
