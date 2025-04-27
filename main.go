@@ -1,7 +1,7 @@
 package aphrodite
 
 import (
-	"fmt";
+	"fmt"
 	"strings"
 )
 
@@ -88,49 +88,49 @@ func Colour(option, color, message string) {
 	var colourChoice string = strings.ToUpper(string(color[0])) + color[1:]
 
 	if strings.ToLower(option) == "color" || strings.ToLower(option) == "colour" {
-    
+
 		colourOfOptionPicked := colour[colourChoice]
 		fmt.Printf("%s%s%s\n", colourOfOptionPicked, message, reset)
 		return
 	}
 
 	if strings.ToLower(option) == "bold" {
-    
+
 		colourOfOptionPicked := Bold[colourChoice]
 		fmt.Printf("%s%s%s\n", colourOfOptionPicked, message, reset)
 		return
 	}
 
 	if strings.ToLower(option) == "underline" {
-    
+
 		colourOfOptionPicked := Underline[colourChoice]
 		fmt.Printf("%s%s%s\n", colourOfOptionPicked, message, reset)
 		return
 	}
 
 	if strings.ToLower(option) == "background" {
-    
+
 		colourOfOptionPicked := Background[colourChoice]
 		fmt.Printf("%s%s%s\n", colourOfOptionPicked, message, reset)
 		return
 	}
 
 	if strings.ToLower(option) == "high_intensity" {
-    
+
 		colourOfOptionPicked := High_Intensity[colourChoice]
 		fmt.Printf("%s%s%s\n", colourOfOptionPicked, message, reset)
 		return
 	}
 
 	if strings.ToLower(option) == "bold_high_intensity" {
-    
+
 		colourOfOptionPicked := Bold_High_Intensity[colourChoice]
 		fmt.Printf("%s%s%s\n", colourOfOptionPicked, message, reset)
 		return
 	}
 
 	if strings.ToLower(option) == "high_intensity_backgrounds" {
-    
+
 		colourOfOptionPicked := High_Intensity_backgrounds[colourChoice]
 		fmt.Printf("%s%s%s\n", colourOfOptionPicked, message, reset)
 		return
@@ -138,27 +138,27 @@ func Colour(option, color, message string) {
 
 }
 
-func PadRight(s string, totalLength int) string {
-        padding := totalLength - len(s)
-        var i = 0
-        if padding > 0{
-                for i < padding{
-                        s = s + " "
-                        i++
-                }
-        }
+func PadRight(s string, totalLength int){
+	padding := totalLength - len(s)
+	var i = 0
+	if padding > 0 {
+		for i < padding {
+			s = s + " "
+			i++
+		}
+	}
 
-        return s
+	fmt.Printf("%s", s)
 }
 
-func PadLeft(s string, totalLength int) string {
-        padding := totalLength - len(s)
-        var i = 0
-        if padding > 0{
-                for i < padding{
-                        s = " " + s
-                        i++
-                }
-        }
-        return s
+func PadLeft(s string, totalLength int){
+	padding := totalLength - len(s)
+	var i = 0
+	if padding > 0 {
+		for i < padding {
+			s = " " + s
+			i++
+		}
+	}
+	fmt.Printf("%s", s)
 }
