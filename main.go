@@ -164,3 +164,30 @@ func PadLeft(s string, totalLength int){
 	}
 	fmt.Printf("%s", newString)
 }
+
+func PadRightTotal(s string, totalLength int){
+	padding := totalLength - len(s)
+	var i = 0
+	newString := s
+	if padding > 0 {
+		for i < padding {
+			newString = newString + " "
+			i++
+		}
+	}
+
+	fmt.Printf("%s", newString)
+}
+
+func PadLeftTotal(s string, totalLength int){
+	padding := totalLength - len(s)
+	var i = 0
+	newString := s
+	if padding > 0 {
+		for i < padding {
+			newString = " " + newString
+			i++
+		}
+	}
+	fmt.Printf("%s", newString)
+}
