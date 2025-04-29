@@ -1,7 +1,6 @@
 package aphrodite
 
 import (
-	"flag"
 	"fmt"
 	"strings"
 )
