@@ -1,13 +1,14 @@
 package aphrodite
 
 import (
+	"errors"
 	"fmt"
-	"strings"
 	"math"
+	"strings"
 )
 
 // Colour prints the message in the specified color.
-func Colour(option, color, message string) {
+func Colour(option, color, message string) error {
 	colour := map[string]string{
 		"Black":  "\x1b[0;30m",
 		"Red":    "\x1b[0;31m",
@@ -86,10 +87,23 @@ func Colour(option, color, message string) {
 	}
 
 	reset := "\x1b[0m"
+
+	acceptableOptions := []string{"Colour", "Color", "Bold", "Underline", "Background", "High_intensity", "Bold_high_intesity", "High_Intensity_backgrounds "}
+	acceptableColours := []string{"Black", "Red", "Green", "Yellow", "Blue", "Purple", "Cyan", "White", "Rainbow"}
+
+	var optionChoice string = strings.Replace(option, " ", "_", -1)
 	var colourChoice string = strings.ToUpper(string(color[0])) + color[1:]
 
-	if strings.ToLower(option) == "color" || strings.ToLower(option) == "colour" {
-		if colourChoice == "Rainbow"{
+	if !listContains(acceptableOptions, option){
+		return errors.New(fmt.Sprint("Unable to recognise option: ", optionChoice))
+	}
+
+	if !listContains(acceptableColours, colourChoice) {
+		return errors.New(fmt.Sprintf("Unfortunately %s isn't a useable colour", colourChoice))
+	}
+
+	if strings.ToLower(optionChoice) == "color" || strings.ToLower(optionChoice) == "colour" {
+		if colourChoice == "Rainbow" {
 			messageLength := len(message)
 			for i := 0; i < messageLength; i++ {
 				r, g, b := rainbow(i)
@@ -99,58 +113,57 @@ func Colour(option, color, message string) {
 			colourOfOptionPicked := colour[colourChoice]
 			fmt.Printf("%s%s%s", colourOfOptionPicked, message, reset)
 		}
-		return
+		return nil
 	}
 
-	if strings.ToLower(option) == "bold" {
+	if strings.ToLower(optionChoice) == "bold" {
 		colourOfOptionPicked := Bold[colourChoice]
 		fmt.Printf("%s%s%s", colourOfOptionPicked, message, reset)
-		return
+		return nil
 	}
 
-	if strings.ToLower(option) == "underline" {
+	if strings.ToLower(optionChoice) == "underline" {
 		colourOfOptionPicked := Underline[colourChoice]
 		fmt.Printf("%s%s%s", colourOfOptionPicked, message, reset)
-		return
+		return nil
 	}
 
-	if strings.ToLower(option) == "background" {
+	if strings.ToLower(optionChoice) == "background" {
 		colourOfOptionPicked := Background[colourChoice]
-		fmt.Printf("%s%s%s", colourOfOptionPicked, message, reset)
-		return
+		fmt.Printf("%s%s%s%s", colourOfOptionPicked, message, reset, reset)
+		return nil
 	}
 
-	if strings.ToLower(option) == "high_intensity" {
+	if strings.ToLower(optionChoice) == "high_intensity" {
 		colourOfOptionPicked := High_Intensity[colourChoice]
 		fmt.Printf("%s%s%s", colourOfOptionPicked, message, reset)
-		return
+		return nil
 	}
 
-	if strings.ToLower(option) == "bold_high_intensity" {
+	if strings.ToLower(optionChoice) == "bold_high_intensity" {
 		colourOfOptionPicked := Bold_High_Intensity[colourChoice]
 		fmt.Printf("%s%s%s", colourOfOptionPicked, message, reset)
-		return
+		return nil
 	}
 
-	if strings.ToLower(option) == "high_intensity_backgrounds" {
+	if strings.ToLower(optionChoice) == "high_intensity_backgrounds" {
 		colourOfOptionPicked := High_Intensity_backgrounds[colourChoice]
 		fmt.Printf("%s%s%s", colourOfOptionPicked, message, reset)
-		return
+		return nil
 	}
-
+	return nil
 }
 
 func listContains(s []string, comparison string) bool {
-	for _, i := range(s){
-		if i == comparison{
+	for _, i := range s {
+		if i == comparison {
 			return true
 		}
 	}
-
 	return false
 }
 
-func PadRight(s string, totalLength int){
+func PadRight(s string, totalLength int) {
 	padding := totalLength + len(s)
 	var i = 0
 	newString := s
@@ -164,7 +177,7 @@ func PadRight(s string, totalLength int){
 	fmt.Printf("%s", newString)
 }
 
-func PadLeft(s string, totalLength int){
+func PadLeft(s string, totalLength int) {
 	padding := totalLength + len(s)
 	var i = 0
 	newString := s
@@ -177,7 +190,7 @@ func PadLeft(s string, totalLength int){
 	fmt.Printf("%s", newString)
 }
 
-func PadRightTotal(s string, totalLength int, flags []string) string{
+func PadRightTotal(s string, totalLength int, flags []string) string {
 	padding := totalLength - len(s)
 	var i = 0
 	newString := s
@@ -188,7 +201,7 @@ func PadRightTotal(s string, totalLength int, flags []string) string{
 		}
 	}
 
-	if listContains(flags, "print"){
+	if listContains(flags, "print") {
 		fmt.Printf("%s", newString)
 		return ""
 	} else {
@@ -196,7 +209,7 @@ func PadRightTotal(s string, totalLength int, flags []string) string{
 	}
 }
 
-func PadLeftTotal(s string, totalLength int, flags []string)string{
+func PadLeftTotal(s string, totalLength int, flags []string) string {
 	padding := totalLength - len(s)
 	var i = 0
 	newString := s
@@ -207,7 +220,7 @@ func PadLeftTotal(s string, totalLength int, flags []string)string{
 		}
 	}
 
-	if listContains(flags, "print"){
+	if listContains(flags, "print") {
 		fmt.Printf("%s", newString)
 		return ""
 	} else {
@@ -216,8 +229,8 @@ func PadLeftTotal(s string, totalLength int, flags []string)string{
 }
 
 func rainbow(i int) (int, int, int) {
-    var f = 0.1
-    return int(math.Sin(f*float64(i)+0)*127 + 128),
-        int(math.Sin(f*float64(i)+2*math.Pi/3)*127 + 128),
-        int(math.Sin(f*float64(i)+4*math.Pi/3)*127 + 128)
+	var f = 0.1
+	return int(math.Sin(f*float64(i)+0)*127 + 128),
+		int(math.Sin(f*float64(i)+2*math.Pi/3)*127 + 128),
+		int(math.Sin(f*float64(i)+4*math.Pi/3)*127 + 128)
 }
