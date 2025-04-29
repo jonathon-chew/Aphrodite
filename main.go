@@ -1,6 +1,7 @@
 package aphrodite
 
 import (
+	"flag"
 	"fmt"
 	"strings"
 )
@@ -131,6 +132,16 @@ func Colour(option, color, message string) {
 
 }
 
+func listContains(s []string, comparison string) bool {
+	for _, i := range(s){
+		if i == comparison{
+			return true
+		}
+	}
+
+	return false
+}
+
 func PadRight(s string, totalLength int){
 	padding := totalLength + len(s)
 	var i = 0
@@ -158,7 +169,7 @@ func PadLeft(s string, totalLength int){
 	fmt.Printf("%s", newString)
 }
 
-func PadRightTotal(s string, totalLength int){
+func PadRightTotal(s string, totalLength int, flags []string) string{
 	padding := totalLength - len(s)
 	var i = 0
 	newString := s
@@ -169,7 +180,12 @@ func PadRightTotal(s string, totalLength int){
 		}
 	}
 
-	fmt.Printf("%s", newString)
+	if listContains(flags, "print"){
+		fmt.Printf("%s", newString)
+		return ""
+	} else {
+		return newString
+	}
 }
 
 func PadLeftTotal(s string, totalLength int){
