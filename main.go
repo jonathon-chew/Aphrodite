@@ -3,6 +3,7 @@ package aphrodite
 import (
 	"fmt"
 	"strings"
+	"math"
 )
 
 // Colour prints the message in the specified color.
@@ -88,8 +89,16 @@ func Colour(option, color, message string) {
 	var colourChoice string = strings.ToUpper(string(color[0])) + color[1:]
 
 	if strings.ToLower(option) == "color" || strings.ToLower(option) == "colour" {
-		colourOfOptionPicked := colour[colourChoice]
-		fmt.Printf("%s%s%s", colourOfOptionPicked, message, reset)
+		if colourChoice == "Rainbow"{
+			messageLength := len(message)
+			for i := 0; i < messageLength; i++ {
+				r, g, b := rainbow(i)
+				fmt.Printf("\033[38;2;%d;%d;%dm%c\033[0m", r, g, b, message)
+			}
+		} else {
+			colourOfOptionPicked := colour[colourChoice]
+			fmt.Printf("%s%s%s", colourOfOptionPicked, message, reset)
+		}
 		return
 	}
 
@@ -204,4 +213,11 @@ func PadLeftTotal(s string, totalLength int, flags []string)string{
 	} else {
 		return newString
 	}
+}
+
+func rainbow(i int) (int, int, int) {
+    var f = 0.1
+    return int(math.Sin(f*float64(i)+0)*127 + 128),
+        int(math.Sin(f*float64(i)+2*math.Pi/3)*127 + 128),
+        int(math.Sin(f*float64(i)+4*math.Pi/3)*127 + 128)
 }
