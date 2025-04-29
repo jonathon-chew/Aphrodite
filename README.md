@@ -1,6 +1,6 @@
 # :rainbow: Aphrodite (Go)
 
-A package for colour terminal outputs in go
+A package for beautifying terminal outputs in go
 
 ## 🚀 Features
 

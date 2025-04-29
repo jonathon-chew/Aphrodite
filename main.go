@@ -88,49 +88,42 @@ func Colour(option, color, message string) {
 	var colourChoice string = strings.ToUpper(string(color[0])) + color[1:]
 
 	if strings.ToLower(option) == "color" || strings.ToLower(option) == "colour" {
-
 		colourOfOptionPicked := colour[colourChoice]
 		fmt.Printf("%s%s%s", colourOfOptionPicked, message, reset)
 		return
 	}
 
 	if strings.ToLower(option) == "bold" {
-
 		colourOfOptionPicked := Bold[colourChoice]
 		fmt.Printf("%s%s%s", colourOfOptionPicked, message, reset)
 		return
 	}
 
 	if strings.ToLower(option) == "underline" {
-
 		colourOfOptionPicked := Underline[colourChoice]
 		fmt.Printf("%s%s%s", colourOfOptionPicked, message, reset)
 		return
 	}
 
 	if strings.ToLower(option) == "background" {
-
 		colourOfOptionPicked := Background[colourChoice]
 		fmt.Printf("%s%s%s", colourOfOptionPicked, message, reset)
 		return
 	}
 
 	if strings.ToLower(option) == "high_intensity" {
-
 		colourOfOptionPicked := High_Intensity[colourChoice]
 		fmt.Printf("%s%s%s", colourOfOptionPicked, message, reset)
 		return
 	}
 
 	if strings.ToLower(option) == "bold_high_intensity" {
-
 		colourOfOptionPicked := Bold_High_Intensity[colourChoice]
 		fmt.Printf("%s%s%s", colourOfOptionPicked, message, reset)
 		return
 	}
 
 	if strings.ToLower(option) == "high_intensity_backgrounds" {
-
 		colourOfOptionPicked := High_Intensity_backgrounds[colourChoice]
 		fmt.Printf("%s%s%s", colourOfOptionPicked, message, reset)
 		return
