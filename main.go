@@ -93,7 +93,7 @@ func Colour(option, color, message string) {
 			messageLength := len(message)
 			for i := 0; i < messageLength; i++ {
 				r, g, b := rainbow(i)
-				fmt.Printf("\033[38;2;%d;%d;%dm%c\033[0m", r, g, b, message)
+				fmt.Printf("\033[38;2;%d;%d;%dm%c\033[0m", r, g, b, message[i])
 			}
 		} else {
 			colourOfOptionPicked := colour[colourChoice]
