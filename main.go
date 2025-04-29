@@ -187,7 +187,7 @@ func PadRightTotal(s string, totalLength int, flags []string) string{
 	}
 }
 
-func PadLeftTotal(s string, totalLength int){
+func PadLeftTotal(s string, totalLength int, flags []string)string{
 	padding := totalLength - len(s)
 	var i = 0
 	newString := s
@@ -197,5 +197,11 @@ func PadLeftTotal(s string, totalLength int){
 			i++
 		}
 	}
-	fmt.Printf("%s", newString)
+
+	if listContains(flags, "print"){
+		fmt.Printf("%s", newString)
+		return ""
+	} else {
+		return newString
+	}
 }
