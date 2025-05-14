@@ -88,7 +88,7 @@ func Colour(option, color, message string) error {
 
 	reset := "\x1b[0m"
 
-	acceptableOptions := []string{"Colour", "Color", "Bold", "Underline", "Background", "High_intensity", "Bold_high_intesity", "High_Intensity_backgrounds "}
+	acceptableOptions := []string{"Colour", "Color", "Bold", "Underline", "Background", "High_intensity", "Bold_high_intesity", "High_Intensity_backgrounds"}
 	acceptableColours := []string{"Black", "Red", "Green", "Yellow", "Blue", "Purple", "Cyan", "White", "Rainbow"}
 
 	var optionChoice string = strings.Replace(option, " ", "_", -1)
@@ -163,7 +163,7 @@ func listContains(s []string, comparison string) bool {
 	return false
 }
 
-func PadRight(s string, totalLength int) {
+func PrintPadR(s string, totalLength int) {
 	padding := totalLength + len(s)
 	var i = 0
 	newString := s
@@ -177,7 +177,7 @@ func PadRight(s string, totalLength int) {
 	fmt.Printf("%s", newString)
 }
 
-func PadLeft(s string, totalLength int) {
+func PrintPadL(s string, totalLength int) {
 	padding := totalLength + len(s)
 	var i = 0
 	newString := s
@@ -190,7 +190,7 @@ func PadLeft(s string, totalLength int) {
 	fmt.Printf("%s", newString)
 }
 
-func PadRightTotal(s string, totalLength int, flags []string) string {
+func PrintPadRT(s string, totalLength int, flags []string){
 	padding := totalLength - len(s)
 	var i = 0
 	newString := s
@@ -201,15 +201,10 @@ func PadRightTotal(s string, totalLength int, flags []string) string {
 		}
 	}
 
-	if listContains(flags, "print") {
-		fmt.Printf("%s", newString)
-		return ""
-	} else {
-		return newString
-	}
+	fmt.Printf("%s", newString)
 }
 
-func PadLeftTotal(s string, totalLength int, flags []string) string {
+func PrintPadLT(s string, totalLength int, flags []string) {
 	padding := totalLength - len(s)
 	var i = 0
 	newString := s
@@ -220,12 +215,7 @@ func PadLeftTotal(s string, totalLength int, flags []string) string {
 		}
 	}
 
-	if listContains(flags, "print") {
 		fmt.Printf("%s", newString)
-		return ""
-	} else {
-		return newString
-	}
 }
 
 func rainbow(i int) (int, int, int) {
