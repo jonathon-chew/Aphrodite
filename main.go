@@ -94,7 +94,7 @@ func Colour(option, color, message string) error {
 	var optionChoice string = strings.Replace(option, " ", "_", -1)
 	var colourChoice string = strings.ToUpper(string(color[0])) + color[1:]
 
-	if !listContains(acceptableOptions, option){
+	if !listContains(acceptableOptions, option) {
 		return errors.New(fmt.Sprint("Unable to recognise option: ", optionChoice))
 	}
 
@@ -190,7 +190,7 @@ func PrintPadL(s string, totalLength int) {
 	fmt.Printf("%s", newString)
 }
 
-func PrintPadRT(s string, totalLength int, flags []string){
+func PrintPadRT(s string, totalLength int) {
 	padding := totalLength - len(s)
 	var i = 0
 	newString := s
@@ -204,7 +204,7 @@ func PrintPadRT(s string, totalLength int, flags []string){
 	fmt.Printf("%s", newString)
 }
 
-func PrintPadLT(s string, totalLength int, flags []string) {
+func PrintPadLT(s string, totalLength int) {
 	padding := totalLength - len(s)
 	var i = 0
 	newString := s
@@ -215,7 +215,62 @@ func PrintPadLT(s string, totalLength int, flags []string) {
 		}
 	}
 
-		fmt.Printf("%s", newString)
+	fmt.Printf("%s", newString)
+}
+
+func ReturnPadR(s string, totalLength int) string {
+	padding := totalLength + len(s)
+	var i = 0
+	newString := s
+	if padding > 0 {
+		for i < padding {
+			newString = newString + " "
+			i++
+		}
+	}
+
+	return fmt.Sprintf("%s", newString)
+}
+
+func ReturnPadL(s string, totalLength int) string {
+	padding := totalLength + len(s)
+	var i = 0
+	newString := s
+	if padding > 0 {
+		for i < padding {
+			newString = " " + newString
+			i++
+		}
+	}
+	return fmt.Sprintf("%s", newString)
+}
+
+func ReturnPadRT(s string, totalLength int) string {
+	padding := totalLength - len(s)
+	var i = 0
+	newString := s
+	if padding > 0 {
+		for i < padding {
+			newString = newString + " "
+			i++
+		}
+	}
+
+	return fmt.Sprintf("%s", newString)
+}
+
+func ReturnPadLT(s string, totalLength int) string {
+	padding := totalLength - len(s)
+	var i = 0
+	newString := s
+	if padding > 0 {
+		for i < padding {
+			newString = " " + newString
+			i++
+		}
+	}
+
+	return fmt.Sprintf("%s", newString)
 }
 
 func rainbow(i int) (int, int, int) {
