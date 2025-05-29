@@ -165,8 +165,8 @@ func listContains(s []string, comparison string) bool {
 	return false
 }
 
-func PrintPadR(s string, totalLength int) {
-	padding := totalLength + len(s)
+func PrintPadR(s string, addLength int) {
+	padding := addLength + len(s)
 	var i = 0
 	newString := s
 	if padding > 0 {
@@ -179,8 +179,8 @@ func PrintPadR(s string, totalLength int) {
 	fmt.Printf("%s", newString)
 }
 
-func PrintPadL(s string, totalLength int) {
-	padding := totalLength + len(s)
+func PrintPadL(s string, addLength int) {
+	padding := addLength + len(s)
 	var i = 0
 	newString := s
 	if padding > 0 {
@@ -220,8 +220,8 @@ func PrintPadLT(s string, totalLength int) {
 	fmt.Printf("%s", newString)
 }
 
-func ReturnPadR(s string, totalLength int) string {
-	padding := totalLength + len(s)
+func ReturnPadR(s string, addLength int) string {
+	padding := addLength + len(s)
 	var i = 0
 	newString := s
 	if padding > 0 {
@@ -234,8 +234,8 @@ func ReturnPadR(s string, totalLength int) string {
 	return fmt.Sprintf("%s", newString)
 }
 
-func ReturnPadL(s string, totalLength int) string {
-	padding := totalLength + len(s)
+func ReturnPadL(s string, addLength int) string {
+	padding := addLength + len(s)
 	var i = 0
 	newString := s
 	if padding > 0 {
