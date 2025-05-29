@@ -102,7 +102,9 @@ func Colour(option, color, message string) error {
 		return errors.New(fmt.Sprintf("Unfortunately %s isn't a useable colour", colourChoice))
 	}
 
-	if strings.ToLower(optionChoice) == "color" || strings.ToLower(optionChoice) == "colour" {
+	var command string = strings.ToLower(optionChoice)
+
+	if command == "color" || command == "colour" || command == "text" || command == "rune" {
 		if colourChoice == "Rainbow" {
 			messageLength := len(message)
 			for i := 0; i < messageLength; i++ {
@@ -116,37 +118,37 @@ func Colour(option, color, message string) error {
 		return nil
 	}
 
-	if strings.ToLower(optionChoice) == "bold" {
+	if command == "bold" {
 		colourOfOptionPicked := Bold[colourChoice]
 		fmt.Printf("%s%s%s", colourOfOptionPicked, message, reset)
 		return nil
 	}
 
-	if strings.ToLower(optionChoice) == "underline" {
+	if command == "underline" {
 		colourOfOptionPicked := Underline[colourChoice]
 		fmt.Printf("%s%s%s", colourOfOptionPicked, message, reset)
 		return nil
 	}
 
-	if strings.ToLower(optionChoice) == "background" {
+	if command == "background" {
 		colourOfOptionPicked := Background[colourChoice]
 		fmt.Printf("%s%s%s%s", colourOfOptionPicked, message, reset, reset)
 		return nil
 	}
 
-	if strings.ToLower(optionChoice) == "high_intensity" {
+	if command == "high_intensity" {
 		colourOfOptionPicked := High_Intensity[colourChoice]
 		fmt.Printf("%s%s%s", colourOfOptionPicked, message, reset)
 		return nil
 	}
 
-	if strings.ToLower(optionChoice) == "bold_high_intensity" {
+	if command == "bold_high_intensity" {
 		colourOfOptionPicked := Bold_High_Intensity[colourChoice]
 		fmt.Printf("%s%s%s", colourOfOptionPicked, message, reset)
 		return nil
 	}
 
-	if strings.ToLower(optionChoice) == "high_intensity_backgrounds" {
+	if command == "high_intensity_backgrounds" {
 		colourOfOptionPicked := High_Intensity_backgrounds[colourChoice]
 		fmt.Printf("%s%s%s", colourOfOptionPicked, message, reset)
 		return nil
