@@ -3,13 +3,12 @@ package aphrodite
 import (
 	"errors"
 	"fmt"
-	"math"
 	"slices"
 	"strings"
 )
 
 // Colour prints the message in the specified color.
-func Colour(option, color, message string) error {
+func ReturnColour(option, color, message string) (string, error) {
 	colour := map[string]string{
 		"Black":  "\x1b[0;30m",
 		"Red":    "\x1b[0;31m",
@@ -96,11 +95,11 @@ func Colour(option, color, message string) error {
 	var colourChoice string = strings.ToUpper(string(color[0])) + color[1:]
 
 	if !slices.Contains(acceptableOptions, option) {
-		return errors.New(fmt.Sprint("Unable to recognise option: ", optionChoice))
+		return "", errors.New(fmt.Sprint("Unable to recognise option: ", optionChoice))
 	}
 
 	if !slices.Contains(acceptableColours, colourChoice) {
-		return fmt.Errorf("unfortunately %s isn't a useable colour", colourChoice)
+		return "", fmt.Errorf("unfortunately %s isn't a useable colour", colourChoice)
 	}
 
 	var command string = strings.ToLower(optionChoice)
@@ -110,166 +109,43 @@ func Colour(option, color, message string) error {
 			messageLength := len(message)
 			for i := 0; i < messageLength; i++ {
 				r, g, b := rainbow(i)
-				fmt.Printf("\033[38;2;%d;%d;%dm%c\033[0m%s", r, g, b, message[i], reset)
+				return fmt.Sprintf("\033[38;2;%d;%d;%dm%c\033[0m%s", r, g, b, message[i], reset), nil
 			}
 		} else {
 			colourOfOptionPicked := colour[colourChoice]
-			fmt.Printf("%s%s%s", colourOfOptionPicked, message, reset)
+			return fmt.Sprintf("%s%s%s", colourOfOptionPicked, message, reset), nil
 		}
-		return nil
+		return "", nil
 	}
 
 	if command == "bold" {
 		colourOfOptionPicked := Bold[colourChoice]
-		fmt.Printf("%s%s%s", colourOfOptionPicked, message, reset)
-		return nil
+		return fmt.Sprintf("%s%s%s", colourOfOptionPicked, message, reset), nil
 	}
 
 	if command == "underline" {
 		colourOfOptionPicked := Underline[colourChoice]
-		fmt.Printf("%s%s%s", colourOfOptionPicked, message, reset)
-		return nil
+		return fmt.Sprintf("%s%s%s", colourOfOptionPicked, message, reset), nil
 	}
 
 	if command == "background" {
 		colourOfOptionPicked := Background[colourChoice]
-		fmt.Printf("%s%s%s%s", colourOfOptionPicked, message, reset, reset)
-		return nil
+		return fmt.Sprintf("%s%s%s%s", colourOfOptionPicked, message, reset, reset), nil
 	}
 
 	if command == "high_intensity" {
 		colourOfOptionPicked := High_Intensity[colourChoice]
-		fmt.Printf("%s%s%s", colourOfOptionPicked, message, reset)
-		return nil
+		return fmt.Sprintf("%s%s%s", colourOfOptionPicked, message, reset), nil
 	}
 
 	if command == "bold_high_intensity" {
 		colourOfOptionPicked := Bold_High_Intensity[colourChoice]
-		fmt.Printf("%s%s%s", colourOfOptionPicked, message, reset)
-		return nil
+		return fmt.Sprintf("%s%s%s", colourOfOptionPicked, message, reset), nil
 	}
 
 	if command == "high_intensity_backgrounds" {
 		colourOfOptionPicked := High_Intensity_backgrounds[colourChoice]
-		fmt.Printf("%s%s%s", colourOfOptionPicked, message, reset)
-		return nil
+		return fmt.Sprintf("%s%s%s", colourOfOptionPicked, message, reset), nil
 	}
-	return nil
-}
-
-func PrintPadR(s string, addLength int) {
-	padding := addLength + len(s)
-	var i = 0
-	newString := s
-	if padding > 0 {
-		for i < padding {
-			newString = newString + " "
-			i++
-		}
-	}
-
-	fmt.Printf("%s", newString)
-}
-
-func PrintPadL(s string, addLength int) {
-	padding := addLength + len(s)
-	var i = 0
-	newString := s
-	if padding > 0 {
-		for i < padding {
-			newString = " " + newString
-			i++
-		}
-	}
-	fmt.Printf("%s", newString)
-}
-
-func PrintPadRT(s string, totalLength int) {
-	padding := totalLength - len(s)
-	var i = 0
-	newString := s
-	if padding > 0 {
-		for i < padding {
-			newString = newString + " "
-			i++
-		}
-	}
-
-	fmt.Printf("%s", newString)
-}
-
-func PrintPadLT(s string, totalLength int) {
-	padding := totalLength - len(s)
-	var i = 0
-	newString := s
-	if padding > 0 {
-		for i < padding {
-			newString = " " + newString
-			i++
-		}
-	}
-
-	fmt.Printf("%s", newString)
-}
-
-func ReturnPadR(s string, addLength int) string {
-	padding := addLength + len(s)
-	var i = 0
-	newString := s
-	if padding > 0 {
-		for i < padding {
-			newString = newString + " "
-			i++
-		}
-	}
-
-	return newString
-}
-
-func ReturnPadL(s string, addLength int) string {
-	padding := addLength + len(s)
-	var i = 0
-	newString := s
-	if padding > 0 {
-		for i < padding {
-			newString = " " + newString
-			i++
-		}
-	}
-	return newString
-}
-
-func ReturnPadRT(s string, totalLength int) string {
-	padding := totalLength - len(s)
-	var i = 0
-	newString := s
-	if padding > 0 {
-		for i < padding {
-			newString = newString + " "
-			i++
-		}
-	}
-
-	return newString
-}
-
-func ReturnPadLT(s string, totalLength int) string {
-	padding := totalLength - len(s)
-	var i = 0
-	newString := s
-	if padding > 0 {
-		for i < padding {
-			newString = " " + newString
-			i++
-		}
-	}
-
-	return newString
-}
-
-func rainbow(i int) (int, int, int) {
-	var f = 0.1
-	return int(math.Sin(f*float64(i)+0)*127 + 128),
-		int(math.Sin(f*float64(i)+2*math.Pi/3)*127 + 128),
-		int(math.Sin(f*float64(i)+4*math.Pi/3)*127 + 128)
+	return "", nil
 }

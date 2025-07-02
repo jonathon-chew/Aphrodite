@@ -1,15 +1,12 @@
 package aphrodite
 
 import (
-	"errors"
 	"fmt"
-	"math"
-	"slices"
 	"strings"
 )
 
 // Colour prints the message in the specified color.
-func Colour(option, color, message string) error {
+func PrintColour(option, color, message string) {
 	colour := map[string]string{
 		"Black":  "\x1b[0;30m",
 		"Red":    "\x1b[0;31m",
@@ -89,19 +86,8 @@ func Colour(option, color, message string) error {
 
 	reset := "\x1b[0m"
 
-	acceptableOptions := []string{"Colour", "Color", "Bold", "Underline", "Background", "High_intensity", "Bold_high_intesity", "High_Intensity_backgrounds"}
-	acceptableColours := []string{"Black", "Red", "Green", "Yellow", "Blue", "Purple", "Cyan", "White", "Rainbow"}
-
 	var optionChoice string = strings.Replace(option, " ", "_", -1)
 	var colourChoice string = strings.ToUpper(string(color[0])) + color[1:]
-
-	if !slices.Contains(acceptableOptions, option) {
-		return errors.New(fmt.Sprint("Unable to recognise option: ", optionChoice))
-	}
-
-	if !slices.Contains(acceptableColours, colourChoice) {
-		return fmt.Errorf("unfortunately %s isn't a useable colour", colourChoice)
-	}
 
 	var command string = strings.ToLower(optionChoice)
 
@@ -116,160 +102,35 @@ func Colour(option, color, message string) error {
 			colourOfOptionPicked := colour[colourChoice]
 			fmt.Printf("%s%s%s", colourOfOptionPicked, message, reset)
 		}
-		return nil
 	}
 
 	if command == "bold" {
 		colourOfOptionPicked := Bold[colourChoice]
 		fmt.Printf("%s%s%s", colourOfOptionPicked, message, reset)
-		return nil
 	}
 
 	if command == "underline" {
 		colourOfOptionPicked := Underline[colourChoice]
 		fmt.Printf("%s%s%s", colourOfOptionPicked, message, reset)
-		return nil
 	}
 
 	if command == "background" {
 		colourOfOptionPicked := Background[colourChoice]
 		fmt.Printf("%s%s%s%s", colourOfOptionPicked, message, reset, reset)
-		return nil
 	}
 
 	if command == "high_intensity" {
 		colourOfOptionPicked := High_Intensity[colourChoice]
 		fmt.Printf("%s%s%s", colourOfOptionPicked, message, reset)
-		return nil
 	}
 
 	if command == "bold_high_intensity" {
 		colourOfOptionPicked := Bold_High_Intensity[colourChoice]
 		fmt.Printf("%s%s%s", colourOfOptionPicked, message, reset)
-		return nil
 	}
 
 	if command == "high_intensity_backgrounds" {
 		colourOfOptionPicked := High_Intensity_backgrounds[colourChoice]
 		fmt.Printf("%s%s%s", colourOfOptionPicked, message, reset)
-		return nil
 	}
-	return nil
-}
-
-func PrintPadR(s string, addLength int) {
-	padding := addLength + len(s)
-	var i = 0
-	newString := s
-	if padding > 0 {
-		for i < padding {
-			newString = newString + " "
-			i++
-		}
-	}
-
-	fmt.Printf("%s", newString)
-}
-
-func PrintPadL(s string, addLength int) {
-	padding := addLength + len(s)
-	var i = 0
-	newString := s
-	if padding > 0 {
-		for i < padding {
-			newString = " " + newString
-			i++
-		}
-	}
-	fmt.Printf("%s", newString)
-}
-
-func PrintPadRT(s string, totalLength int) {
-	padding := totalLength - len(s)
-	var i = 0
-	newString := s
-	if padding > 0 {
-		for i < padding {
-			newString = newString + " "
-			i++
-		}
-	}
-
-	fmt.Printf("%s", newString)
-}
-
-func PrintPadLT(s string, totalLength int) {
-	padding := totalLength - len(s)
-	var i = 0
-	newString := s
-	if padding > 0 {
-		for i < padding {
-			newString = " " + newString
-			i++
-		}
-	}
-
-	fmt.Printf("%s", newString)
-}
-
-func ReturnPadR(s string, addLength int) string {
-	padding := addLength + len(s)
-	var i = 0
-	newString := s
-	if padding > 0 {
-		for i < padding {
-			newString = newString + " "
-			i++
-		}
-	}
-
-	return newString
-}
-
-func ReturnPadL(s string, addLength int) string {
-	padding := addLength + len(s)
-	var i = 0
-	newString := s
-	if padding > 0 {
-		for i < padding {
-			newString = " " + newString
-			i++
-		}
-	}
-	return newString
-}
-
-func ReturnPadRT(s string, totalLength int) string {
-	padding := totalLength - len(s)
-	var i = 0
-	newString := s
-	if padding > 0 {
-		for i < padding {
-			newString = newString + " "
-			i++
-		}
-	}
-
-	return newString
-}
-
-func ReturnPadLT(s string, totalLength int) string {
-	padding := totalLength - len(s)
-	var i = 0
-	newString := s
-	if padding > 0 {
-		for i < padding {
-			newString = " " + newString
-			i++
-		}
-	}
-
-	return newString
-}
-
-func rainbow(i int) (int, int, int) {
-	var f = 0.1
-	return int(math.Sin(f*float64(i)+0)*127 + 128),
-		int(math.Sin(f*float64(i)+2*math.Pi/3)*127 + 128),
-		int(math.Sin(f*float64(i)+4*math.Pi/3)*127 + 128)
 }
