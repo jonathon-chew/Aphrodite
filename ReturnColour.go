@@ -7,11 +7,10 @@ import (
 	"strings"
 )
 
-// Colour prints the message in the specified color.
+/*
+Options: Black, Red, Green, Yellow, Blue, Purple, Cyan, White
+*/
 func ReturnColour(option, color, message string) (string, error) {
-	/*
-		Options: Black, Red, Green, Yellow, Blue, Purple, Cyan, White
-	*/
 
 	colour := map[string]string{
 		"Black":  "\x1b[0;30m",
