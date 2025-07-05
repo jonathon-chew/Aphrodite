@@ -5,6 +5,10 @@ import (
 	"strings"
 )
 
+// (#1) TODO: Also refactor like ReturnColour to remove the option argument from the function call and split into it's own functions
+
+// (#2) TODO: Assess performance - would it be better to just load the map relevent on each individual function rather than in one big function / global
+
 // Options: Black, Red, Green, Yellow, Blue, Purple, Cyan, White
 func PrintColour(option, color, message string) {
 
