@@ -177,7 +177,7 @@ func PrintPadR(s string, addLength int) {
 }
 
 func checkColourInList(colourchoice string) bool {
-	acceptableColours := []string{"Black", "Red", "Green", "Yellow", "Blue", "Purple", "Cyan", "White", "Rainbow"}
+	acceptableColours := []string{"Black", "Red", "Green", "Yellow", "Blue", "Purple", "Cyan", "White", "Rainbow", "Empty"}
 	return !slices.Contains(acceptableColours, colourchoice)
 }
 

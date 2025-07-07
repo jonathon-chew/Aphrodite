@@ -13,13 +13,16 @@ func PrintColour(color, message string) {
 
 	var colourChoice string = strings.ToUpper(string(color[0])) + color[1:]
 
-	if colourChoice == "Rainbow" {
+	switch colourChoice {
+	case "Rainbow":
 		messageLength := len(message)
 		for i := 0; i < messageLength; i++ {
 			r, g, b := rainbow(i)
 			fmt.Printf("\033[38;2;%d;%d;%dm%c\033[0m%s", r, g, b, message[i], reset)
 		}
-	} else {
+	case "Empty":
+		fmt.Print(message)
+	default:
 		var colourPicked string = colour[colourChoice]
 		fmt.Printf("%s%s%s", colourPicked, message, reset)
 	}

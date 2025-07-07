@@ -17,13 +17,16 @@ func ReturnColour(color, message string) (string, error) {
 		return "", unacceptableColour(colourChoice)
 	}
 
-	if colourChoice == "Rainbow" {
+	switch colourChoice {
+	case "Rainbow":
 		messageLength := len(message)
 		for i := 0; i < messageLength; i++ {
 			r, g, b := rainbow(i)
 			return fmt.Sprintf("\033[38;2;%d;%d;%dm%c\033[0m%s", r, g, b, message[i], reset), nil
 		}
-	} else {
+	case "Empty":
+		return fmt.Sprint(message), nil
+	default:
 		var colourPicked string = colour[colourChoice]
 		return fmt.Sprintf("%s%s%s", colourPicked, message, reset), nil
 	}
