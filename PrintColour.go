@@ -3,6 +3,7 @@ package aphrodite
 import (
 	"fmt"
 	"math/rand"
+	"reflect"
 	"strings"
 	"time"
 )
@@ -30,8 +31,11 @@ func PrintColour(color, message string) {
 	}
 }
 
+/*
+Randomly choose a colour for you from: Black, Red, Green, Yellow, Blue, Purple, Cyan, White and prints it
+*/
 func Print(message string) {
-	rand.Seed(time.Now().UnixNano()) // Seed the random number generator
+	rand.Seed(time.Now().UnixNano())
 	randomIndex := rand.Intn(len(colour))
 
 	keys := make([]string, 0, len(colour))
@@ -40,6 +44,22 @@ func Print(message string) {
 	var colourChoice string = colour[keys[randomIndex]]
 
 	PrintColour(colourChoice, message)
+}
+
+/*
+Prints any table that is passed into it - currently underdevelopment looking into how this could be more safely implimented
+Pass in a map of any values and returns a printed table of the key / values
+*/
+func PrintTable(m any) {
+	v := reflect.ValueOf(m)
+
+	// Get key and value types
+	for _, key := range v.MapKeys() {
+		val := v.MapIndex(key)
+		keyColour, _ := ReturnColour("Blue", fmt.Sprintf("%v", key.Interface()))
+		valueColour, _ := ReturnColour("Green", fmt.Sprintf("%v", val.Interface()))
+		fmt.Printf("%v: %v\n", keyColour, valueColour)
+	}
 }
 
 /*
