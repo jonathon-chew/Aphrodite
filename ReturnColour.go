@@ -2,7 +2,9 @@ package aphrodite
 
 import (
 	"fmt"
+	"math/rand"
 	"strings"
+	"time"
 )
 
 /*
@@ -31,6 +33,22 @@ func ReturnColour(color, message string) (string, error) {
 		return fmt.Sprintf("%s%s%s", colourPicked, message, reset), nil
 	}
 	return "", nil
+}
+
+/*
+Randomly choose a colour for you from: Black, Red, Green, Yellow, Blue, Purple, Cyan, White
+Can error if colour not found
+*/
+func Return(message string) (string, error) {
+	rand.Seed(time.Now().UnixNano()) // Seed the random number generator
+	randomIndex := rand.Intn(len(colour))
+
+	keys := make([]string, 0, len(colour))
+	keys = append(keys, keys...)
+
+	var colourChoice string = colour[keys[randomIndex]]
+
+	return ReturnColour(colourChoice, message)
 }
 
 /*

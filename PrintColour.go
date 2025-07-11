@@ -2,7 +2,9 @@ package aphrodite
 
 import (
 	"fmt"
+	"math/rand"
 	"strings"
+	"time"
 )
 
 /*
@@ -26,6 +28,18 @@ func PrintColour(color, message string) {
 		var colourPicked string = colour[colourChoice]
 		fmt.Printf("%s%s%s", colourPicked, message, reset)
 	}
+}
+
+func Print(message string) {
+	rand.Seed(time.Now().UnixNano()) // Seed the random number generator
+	randomIndex := rand.Intn(len(colour))
+
+	keys := make([]string, 0, len(colour))
+	keys = append(keys, keys...)
+
+	var colourChoice string = colour[keys[randomIndex]]
+
+	PrintColour(colourChoice, message)
 }
 
 /*
