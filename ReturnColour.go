@@ -40,14 +40,30 @@ Randomly choose a colour for you from: Black, Red, Green, Yellow, Blue, Purple, 
 Can error if colour not found
 */
 func Return(message string) (string, error) {
-	rand.Seed(time.Now().UnixNano()) // Seed the random number generator
-	randomIndex := rand.Intn(len(colour))
+	r := rand.New(rand.NewSource(time.Now().UnixNano()))
 
 	keys := make([]string, 0, len(colour))
-	keys = append(keys, keys...)
+	for key := range colour {
+		keys = append(keys, key) // Append keys from the map
+	}
 
-	var colourChoice string = colour[keys[randomIndex]]
+	// Ensure there are keys to choose from
+	if len(keys) == 0 {
+		return "", fmt.Errorf("no colors available")
+	}
 
+	// Generate a random index
+	randomIndex := r.Intn(len(keys)) // Use len(keys) directly
+
+	// Get the random color choice
+	colourChoice := keys[randomIndex]
+
+	// Print the chosen color for debugging
+	fmt.Println("Available colors:", keys)
+	// fmt.Println("Random index:", randomIndex)
+	fmt.Println("Chosen color:", colourChoice)
+
+	// Call ReturnColour with the chosen color
 	return ReturnColour(colourChoice, message)
 }
 
