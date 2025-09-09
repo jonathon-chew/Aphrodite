@@ -35,7 +35,7 @@ func PrintColour(color, message string) {
 Randomly choose a colour for you from: Black, Red, Green, Yellow, Blue, Purple, Cyan, White and prints it
 */
 func Print(message string) {
-	rand.Seed(time.Now().UnixNano())
+	rand.New(rand.NewSource(time.Now().UnixNano()))
 	randomIndex := rand.Intn(len(colour))
 
 	keys := make([]string, 0, len(colour))
