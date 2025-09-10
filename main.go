@@ -294,3 +294,5 @@ func rainbow(i int) (int, int, int) {
 		int(math.Sin(f*float64(i)+2*math.Pi/3)*127 + 128),
 		int(math.Sin(f*float64(i)+4*math.Pi/3)*127 + 128)
 }
+
+// (#3) TODO: Add Common uses like Warning, Error, Info - both print and return and return no error!

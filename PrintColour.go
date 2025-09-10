@@ -47,6 +47,29 @@ func Print(message string) {
 }
 
 /*
+Uses the default colour of red - if you would like to determin you PrintError Colour use the function PrintColour instead
+*/
+func PrintError(message string){
+	PrintColour("Red", message)
+}
+
+/*
+Uses the default colour of Green- if you would like to determin you PrintError Colour use the function PrintColour instead
+*/
+func PrintInfo(message string){
+	PrintColour("Green", message)
+}
+
+/*
+This ignores warnings from a malformed message, to be used quickly when the message will be known prior to use to be safe!
+*/
+func PrintWarning(message string){
+	PrintColour("Yellow", message)
+}
+
+
+
+/*
 Prints any table that is passed into it - currently underdevelopment looking into how this could be more safely implimented
 Pass in a map of any values and returns a printed table of the key / values
 */

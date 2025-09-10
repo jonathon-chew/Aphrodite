@@ -36,6 +36,31 @@ func ReturnColour(color, message string) (string, error) {
 }
 
 /*
+This ignores warnings from a malformed message, to be used quickly when the message will be known prior to use to be safe!
+*/
+func ReturnError(message string){
+	returnMessage, _ := ReturnColour("Red", message)
+	return returnMessage
+}
+
+/*
+This ignores warnings from a malformed message, to be used quickly when the message will be known prior to use to be safe!
+*/
+func ReturnInfo(message string){
+	returnMessage, _ := ReturnColour("Green", message)
+	return returnMessage
+}
+
+/*
+This ignores warnings from a malformed message, to be used quickly when the message will be known prior to use to be safe!
+*/
+func ReturnWarning(message string){
+	returnMessage, _ := ReturnColour("Info", message)
+	return returnMessage
+}
+
+
+/*
 Randomly choose a colour for you from: Black, Red, Green, Yellow, Blue, Purple, Cyan, White
 Can error if colour not found
 */
