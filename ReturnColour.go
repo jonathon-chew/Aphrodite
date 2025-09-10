@@ -38,7 +38,7 @@ func ReturnColour(color, message string) (string, error) {
 /*
 This ignores warnings from a malformed message, to be used quickly when the message will be known prior to use to be safe!
 */
-func ReturnError(message string){
+func ReturnError(message string)string{
 	returnMessage, _ := ReturnColour("Red", message)
 	return returnMessage
 }
@@ -46,7 +46,7 @@ func ReturnError(message string){
 /*
 This ignores warnings from a malformed message, to be used quickly when the message will be known prior to use to be safe!
 */
-func ReturnInfo(message string){
+func ReturnInfo(message string)string{
 	returnMessage, _ := ReturnColour("Green", message)
 	return returnMessage
 }
@@ -54,8 +54,8 @@ func ReturnInfo(message string){
 /*
 This ignores warnings from a malformed message, to be used quickly when the message will be known prior to use to be safe!
 */
-func ReturnWarning(message string){
-	returnMessage, _ := ReturnColour("Info", message)
+func ReturnWarning(message string)string{
+	returnMessage, _ := ReturnColour("Yellow", message)
 	return returnMessage
 }
 
@@ -84,9 +84,9 @@ func Return(message string) (string, error) {
 	colourChoice := keys[randomIndex]
 
 	// Print the chosen color for debugging
-	fmt.Println("Available colors:", keys)
-	// fmt.Println("Random index:", randomIndex)
-	fmt.Println("Chosen color:", colourChoice)
+	// fmt.Println("Available colors:", keys)
+	// // fmt.Println("Random index:", randomIndex)
+	// fmt.Println("Chosen color:", colourChoice)
 
 	// Call ReturnColour with the chosen color
 	return ReturnColour(colourChoice, message)
