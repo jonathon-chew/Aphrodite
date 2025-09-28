@@ -41,6 +41,13 @@ func Print(message string) {
 	keys := make([]string, 0, len(colour))
 	keys = append(keys, keys...)
 
+	// (#4) TODO: This doesn't appear to work, sometimes/always appears to return index out of range
+	//goroutine 1 [running]:
+	// github.com/jonathon-chew/Aphrodite.Print({0x1400000e1f0, 0xb})
+	// 	/Users/hunteradder626/go/pkg/mod/github.com/jonathon-chew/!aphrodite@v1.3.35/PrintColour.go:44 +0x1d8
+	// main.main()
+	// 	/Users/hunteradder626/Documents/Scripts/Go/Draft/Lines_Of_Code/main.go:86 +0x110
+	// exit status 2
 	var colourChoice string = colour[keys[randomIndex]]
 
 	PrintColour(colourChoice, message)
