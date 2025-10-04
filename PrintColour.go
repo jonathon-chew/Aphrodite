@@ -8,6 +8,8 @@ import (
 	"time"
 )
 
+// (#5) TODO: Add the ability to pass in format strings to not rely on fmt.Sprtintf to make the string to pass into the function every time
+
 /*
 Options: Black, Red, Green, Yellow, Blue, Purple, Cyan, White
 Can error if colour not found
@@ -73,8 +75,6 @@ This ignores warnings from a malformed message, to be used quickly when the mess
 func PrintWarning(message string){
 	PrintColour("Yellow", message)
 }
-
-
 
 /*
 Prints any table that is passed into it - currently underdevelopment looking into how this could be more safely implimented
