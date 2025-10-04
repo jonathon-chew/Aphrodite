@@ -7,6 +7,8 @@ import (
 	"time"
 )
 
+// (#6) TODO: Add the ability to pass in format strings to not rely on fmt.Sprtintf to make the string to pass into the function every time
+
 /*
 Options: Black, Red, Green, Yellow, Blue, Purple, Cyan, White
 Can error if colour not found
