@@ -1,4 +1,8 @@
 # :rainbow: Aphrodite (Go)
+<p align="center">
+<img width="400" src="doc/images/Aphrodite.png" alt="Aphrodite" title="Aphrodite" />
+</p>
+
 
 A package for beautifying terminal outputs in go
 
