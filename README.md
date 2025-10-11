@@ -57,3 +57,7 @@ Issues will be tracked in Github issues.
 ## 📜 License
 
 This project is licensed under the MIT License. See the LICENSE file for details.
+### 🖌️ Attribution
+
+The Go Gopher was originally designed by [Renee French](https://reneefrench.blogspot.com/).  
+Used under the [Creative Commons Attribution 4.0 License](https://creativecommons.org/licenses/by/4.0/).  
