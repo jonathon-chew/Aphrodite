@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"math"
 	"slices"
+	"strconv"
 	"strings"
 )
 
@@ -115,7 +116,7 @@ func Colour(option, color, message string) error {
 			messageLength := len(message)
 			for i := 0; i < messageLength; i++ {
 				r, g, b := rainbow(i)
-				fmt.Printf("\033[38;2;%d;%d;%dm%c\033[0m%s", r, g, b, message[i], reset)
+				fmt.Printf("\033[38;2;%s;%s;%sm%c\033[0m%s", r, g, b, message[i], reset)
 			}
 		} else {
 			colourOfOptionPicked := colour[colourChoice]
@@ -288,11 +289,11 @@ func ReturnPadLT(s string, totalLength int) string {
 	return newString
 }
 
-func rainbow(i int) (int, int, int) {
+func rainbow(i int) (string, string, string) {
 	var f = 0.1
-	return int(math.Sin(f*float64(i)+0)*127 + 128),
-		int(math.Sin(f*float64(i)+2*math.Pi/3)*127 + 128),
-		int(math.Sin(f*float64(i)+4*math.Pi/3)*127 + 128)
+	return strconv.Itoa(int(math.Sin(f*float64(i)+0)*127 + 128)),
+		strconv.Itoa(int(math.Sin(f*float64(i)+2*math.Pi/3)*127 + 128)),
+		strconv.Itoa(int(math.Sin(f*float64(i)+4*math.Pi/3)*127 + 128))
 }
 
 // (#3) TODO: Add Common uses like Warning, Error, Info - both print and return and return no error!

@@ -3,6 +3,7 @@ package aphrodite
 import (
 	"fmt"
 	"math/rand"
+	"strconv"
 	"strings"
 	"time"
 )
@@ -26,13 +27,13 @@ func ReturnColour(color, message string) (string, error) {
 		messageLength := len(message)
 		for i := 0; i < messageLength; i++ {
 			r, g, b := rainbow(i)
-			return fmt.Sprintf("\033[38;2;%d;%d;%dm%c\033[0m%s", r, g, b, message[i], reset), nil
+			return "\033[38;2;" + r + g + b + string(message[i]) + reset, nil
 		}
 	case "Empty":
-		return fmt.Sprint(message), nil
+		return message, nil
 	default:
 		var colourPicked string = colour[colourChoice]
-		return fmt.Sprintf("%s%s%s", colourPicked, message, reset), nil
+		return colourPicked + message + reset, nil
 	}
 	return "", nil
 }
@@ -60,7 +61,6 @@ func ReturnWarning(message string)string{
 	returnMessage, _ := ReturnColour("Yellow", message)
 	return returnMessage
 }
-
 
 /*
 Randomly choose a colour for you from: Black, Red, Green, Yellow, Blue, Purple, Cyan, White
@@ -100,7 +100,11 @@ Can error if the values are not the right size
 */
 func ReturnRGBColour(r, g, b int, message string) (string, error) {
 	if r >= 0 && r < 256 && g >= 0 && g < 265 && b >= 0 && b < 265 {
-		return fmt.Sprintf("\033[38;2;%d;%d;%dm%s\033[0m%s", r, g, b, message, reset), nil
+		var red string = strconv.Itoa(r)
+		var green string = strconv.Itoa(g)
+		var blue string = strconv.Itoa(b)
+
+		return "\033[38;2;" + red + green + blue + "m" + message + reset, nil
 	}
 
 	return "", fmt.Errorf("red: %d, green: %d, b: %d are the vales passed in, and should each be between 0 and 256", r, g, b)
@@ -115,7 +119,7 @@ func ReturnBold(colourChoice, message string) (string, error) {
 	if !checkColourInList(colourChoice) {
 		return "", unacceptableColour(colourPicked)
 	}
-	return fmt.Sprintf("%s%s%s", colourPicked, message, reset), nil
+	return colourPicked + message + reset, nil
 }
 
 /*
@@ -127,7 +131,7 @@ func ReturnUnderline(colourChoice, message string) (string, error) {
 	if !checkColourInList(colourChoice) {
 		return "", unacceptableColour(colourPicked)
 	}
-	return fmt.Sprintf("%s%s%s", colourPicked, message, reset), nil
+	return colourPicked + message + reset, nil
 }
 
 /*
@@ -139,7 +143,7 @@ func ReturnBackground(colourChoice, message string) (string, error) {
 	if !checkColourInList(colourChoice) {
 		return "", unacceptableColour(colourPicked)
 	}
-	return fmt.Sprintf("%s%s%s%s", colourPicked, message, reset, reset), nil
+	return colourPicked + message + reset, nil
 }
 
 /*
@@ -151,7 +155,7 @@ func ReturnHighIntensity(colourChoice, message string) (string, error) {
 	if !checkColourInList(colourChoice) {
 		return "", unacceptableColour(colourPicked)
 	}
-	return fmt.Sprintf("%s%s%s", colourPicked, message, reset), nil
+	return colourPicked + message + reset, nil
 }
 
 /*
@@ -163,7 +167,7 @@ func ReturnBoldHighIntensity(colourChoice, message string) (string, error) {
 	if !checkColourInList(colourChoice) {
 		return "", unacceptableColour(colourPicked)
 	}
-	return fmt.Sprintf("%s%s%s", colourPicked, message, reset), nil
+	return colourPicked + message + reset, nil
 }
 
 /*
@@ -175,5 +179,5 @@ func ReturnHighIntensityBackgrounds(colourChoice, message string) (string, error
 	if !checkColourInList(colourChoice) {
 		return "", unacceptableColour(colourPicked)
 	}
-	return fmt.Sprintf("%s%s%s", colourPicked, message, reset), nil
+	return colourPicked + message + reset, nil
 }

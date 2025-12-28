@@ -23,7 +23,7 @@ func PrintColour(color, message string) {
 		messageLength := len(message)
 		for i := 0; i < messageLength; i++ {
 			r, g, b := rainbow(i)
-			fmt.Printf("\033[38;2;%d;%d;%dm%c\033[0m%s", r, g, b, message[i], reset)
+			fmt.Printf("\033[38;2;%s;%s;%sm%c\033[0m%s", r, g, b, message[i], reset)
 		}
 	case "Empty":
 		fmt.Print(message)
