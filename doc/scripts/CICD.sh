@@ -61,7 +61,7 @@ fi
 if [[ -f "$HOME/go/bin/Thoth" ]]; then
   if [[ $dry == "0" ]]; then
     echo -e "${CYAN} Updating git tags...${RESET}"
-    if ./Thoth -i; then 
+    if Thoth -i; then 
       echo -e "${GREEN} Successfully updated the tags!${RESET}"
     else
       echo -e "${RED} Failed to update the tags successfully !${RESET}"
