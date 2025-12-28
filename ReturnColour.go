@@ -41,7 +41,7 @@ func ReturnColour(color, message string) (string, error) {
 /*
 This ignores warnings from a malformed message, to be used quickly when the message will be known prior to use to be safe!
 */
-func ReturnError(message string) string {
+func ReturnError(message string)string{
 	returnMessage, _ := ReturnColour("Red", message)
 	return returnMessage
 }
@@ -49,7 +49,7 @@ func ReturnError(message string) string {
 /*
 This ignores warnings from a malformed message, to be used quickly when the message will be known prior to use to be safe!
 */
-func ReturnInfo(message string) string {
+func ReturnInfo(message string)string{
 	returnMessage, _ := ReturnColour("Green", message)
 	return returnMessage
 }
@@ -57,7 +57,7 @@ func ReturnInfo(message string) string {
 /*
 This ignores warnings from a malformed message, to be used quickly when the message will be known prior to use to be safe!
 */
-func ReturnWarning(message string) string {
+func ReturnWarning(message string)string{
 	returnMessage, _ := ReturnColour("Yellow", message)
 	return returnMessage
 }
