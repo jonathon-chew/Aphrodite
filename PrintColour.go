@@ -23,7 +23,7 @@ func PrintColour(color, message string) {
 		messageLength := len(message)
 		for i := 0; i < messageLength; i++ {
 			r, g, b := rainbow(i)
-			fmt.Printf("\033[38;2;%d;%d;%dm%c\033[0m%s", r, g, b, message[i], reset)
+			fmt.Printf("\033[38;2;%s;%s;%sm%c\033[0m%s", r, g, b, message[i], reset)
 		}
 	case "Empty":
 		fmt.Print(message)
@@ -58,21 +58,21 @@ func Print(message string) {
 /*
 Uses the default colour of red - if you would like to determin you PrintError Colour use the function PrintColour instead
 */
-func PrintError(message string){
+func PrintError(message string) {
 	PrintColour("Red", message)
 }
 
 /*
 Uses the default colour of Green- if you would like to determin you PrintError Colour use the function PrintColour instead
 */
-func PrintInfo(message string){
+func PrintInfo(message string) {
 	PrintColour("Green", message)
 }
 
 /*
 This ignores warnings from a malformed message, to be used quickly when the message will be known prior to use to be safe!
 */
-func PrintWarning(message string){
+func PrintWarning(message string) {
 	PrintColour("Yellow", message)
 }
 
