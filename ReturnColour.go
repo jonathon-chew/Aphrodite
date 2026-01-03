@@ -8,8 +8,6 @@ import (
 	"time"
 )
 
-// (#6) TODO: Add the ability to pass in format strings to not rely on fmt.Sprtintf to make the string to pass into the function every time
-
 /*
 Options: Black, Red, Green, Yellow, Blue, Purple, Cyan, White
 Can error if colour not found
@@ -41,7 +39,7 @@ func ReturnColour(color, message string) (string, error) {
 /*
 This ignores warnings from a malformed message, to be used quickly when the message will be known prior to use to be safe!
 */
-func ReturnError(message string)string{
+func ReturnError(message string) string {
 	returnMessage, _ := ReturnColour("Red", message)
 	return returnMessage
 }
@@ -49,7 +47,7 @@ func ReturnError(message string)string{
 /*
 This ignores warnings from a malformed message, to be used quickly when the message will be known prior to use to be safe!
 */
-func ReturnInfo(message string)string{
+func ReturnInfo(message string) string {
 	returnMessage, _ := ReturnColour("Green", message)
 	return returnMessage
 }
@@ -57,7 +55,7 @@ func ReturnInfo(message string)string{
 /*
 This ignores warnings from a malformed message, to be used quickly when the message will be known prior to use to be safe!
 */
-func ReturnWarning(message string)string{
+func ReturnWarning(message string) string {
 	returnMessage, _ := ReturnColour("Yellow", message)
 	return returnMessage
 }

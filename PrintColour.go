@@ -3,6 +3,7 @@ package aphrodite
 import (
 	"fmt"
 	"math/rand"
+	"os"
 	"reflect"
 	"strings"
 	"time"
@@ -58,21 +59,21 @@ func Print(message string) {
 /*
 Uses the default colour of red - if you would like to determin you PrintError Colour use the function PrintColour instead
 */
-func PrintError(message string){
+func PrintError(message string) {
 	PrintColour("Red", message)
 }
 
 /*
 Uses the default colour of Green- if you would like to determin you PrintError Colour use the function PrintColour instead
 */
-func PrintInfo(message string){
+func PrintInfo(message string) {
 	PrintColour("Green", message)
 }
 
 /*
 This ignores warnings from a malformed message, to be used quickly when the message will be known prior to use to be safe!
 */
-func PrintWarning(message string){
+func PrintWarning(message string) {
 	PrintColour("Yellow", message)
 }
 
@@ -158,4 +159,11 @@ func PrintHighIntensityBackgrounds(colourChoice, message string) {
 	var colourPicked string = high_Intensity_backgrounds[strings.ToUpper(string(colourChoice[0]))+colourChoice[1:]]
 
 	fmt.Printf("%s%s%s", colourPicked, message, reset)
+}
+
+func PrintByte(message []byte) {
+	_, err := os.Stdout.Write(message)
+	if err != nil {
+		panic("Couldn't write to standard out")
+	}
 }

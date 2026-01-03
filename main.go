@@ -291,9 +291,11 @@ func ReturnPadLT(s string, totalLength int) string {
 
 func rainbow(i int) (string, string, string) {
 	var f = 0.1
+
+	// temp := int(math.Sin(f * float64(i)))
+	// suffix := 127 + 128 // 255
+
 	return strconv.Itoa(int(math.Sin(f*float64(i)+0)*127 + 128)),
 		strconv.Itoa(int(math.Sin(f*float64(i)+2*math.Pi/3)*127 + 128)),
 		strconv.Itoa(int(math.Sin(f*float64(i)+4*math.Pi/3)*127 + 128))
 }
-
-// (#3) TODO: Add Common uses like Warning, Error, Info - both print and return and return no error!
