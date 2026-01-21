@@ -58,10 +58,10 @@ fi
 # Step 4: Incriment the tag version
 # ----------------------------
 
-if [[ -f "$HOME/go/bin/Thoth" ]]; then
+if [[ -f "$HOME/go/bin/repoflow" ]]; then
   if [[ $dry == "0" ]]; then
     echo -e "${CYAN} Updating git tags...${RESET}"
-    if Thoth -i; then 
+    if repoflow -i; then 
       echo -e "${GREEN} Successfully updated the tags!${RESET}"
     else
       echo -e "${RED} Failed to update the tags successfully !${RESET}"
