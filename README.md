@@ -3,7 +3,6 @@
 <img width="400" src="doc/images/Aphrodite.png" alt="Aphrodite" title="Aphrodite" />
 </p>
 
-
 A package for beautifying terminal outputs in go
 
 ## 🚀 Features
@@ -51,12 +50,12 @@ Coloured/Formatted text in your terminal for convience
 
 ## 🧠 Notes
 
-This is currently a work in progress with a few inovations planned for the future.
 Issues will be tracked in Github issues.
 
 ## 📜 License
 
 This project is licensed under the MIT License. See the LICENSE file for details.
+
 ### 🖌️ Attribution
 
 The Go Gopher was originally designed by [Renee French](https://reneefrench.blogspot.com/).  
