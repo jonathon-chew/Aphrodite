@@ -23,9 +23,7 @@ A package for beautifying terminal outputs in go
    go mod init
    go get -u github.com/jonathon-chew/aphrodite v1.0.2
    ```
-
   Should output in your go.mod file:
-
   ```bash
   require github.com/jonathon-chew/aphrodite v1.0.2 // indirect
   ```
@@ -35,9 +33,7 @@ A package for beautifying terminal outputs in go
   ```go
    import github.com/jonathon-chew/aphrodite
   ```
-
   or 
-
   ```go
    import aphrodite "github.com/jonathon-chew/aphrodite"
   ```
