@@ -21,11 +21,11 @@ A package for beautifying terminal outputs in go
 
   ```bash
    go mod init
-   go get -u github.com/jonathon-chew/aphrodite v1.0.2
+   go get -u github.com/jonathon-chew/aphrodite@latest
    ```
-  Should output in your go.mod file:
+  Should output in your go.mod file should look something like this:
   ```bash
-  require github.com/jonathon-chew/aphrodite v1.0.2 // indirect
+  require github.com/jonathon-chew/aphrodite v1.5.2 // indirect
   ```
 
 2. In your go source file where required:
