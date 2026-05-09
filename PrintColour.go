@@ -17,6 +17,11 @@ Can error if colour not found
 */
 func PrintColour(color, message string) {
 
+	if !useANSI() {
+		fmt.Print(message)
+		return
+	}
+
 	var colourChoice string = strings.ToUpper(string(color[0])) + color[1:]
 
 	switch colourChoice {
@@ -38,19 +43,17 @@ func PrintColour(color, message string) {
 Randomly choose a colour for you from: Black, Red, Green, Yellow, Blue, Purple, Cyan, White and prints it
 */
 func Print(message string) {
+	if !useANSI() {
+		fmt.Print(message)
+		return
+	}
+
 	rand.New(rand.NewSource(time.Now().UnixNano()))
 	randomIndex := rand.Intn(len(colour))
 
 	keys := make([]string, 0, len(colour))
 	keys = append(keys, keys...)
 
-	// (#4) TODO: This doesn't appear to work, sometimes/always appears to return index out of range
-	//goroutine 1 [running]:
-	// github.com/jonathon-chew/Aphrodite.Print({0x1400000e1f0, 0xb})
-	// 	/Users/hunteradder626/go/pkg/mod/github.com/jonathon-chew/!aphrodite@v1.3.35/PrintColour.go:44 +0x1d8
-	// main.main()
-	// 	/Users/hunteradder626/Documents/Scripts/Go/Draft/Lines_Of_Code/main.go:86 +0x110
-	// exit status 2
 	var colourChoice string = colour[keys[randomIndex]]
 
 	PrintColour(colourChoice, message)
@@ -87,9 +90,15 @@ func PrintTable(m any) {
 	// Get key and value types
 	for _, key := range v.MapKeys() {
 		val := v.MapIndex(key)
-		keyColour, _ := ReturnColour("Blue", fmt.Sprintf("%v", key.Interface()))
-		valueColour, _ := ReturnColour("Green", fmt.Sprintf("%v", val.Interface()))
-		fmt.Printf("%v: %v\n", keyColour, valueColour)
+		if useANSI() {
+			keyColour, _ := ReturnColour("Blue", fmt.Sprintf("%v", key.Interface()))
+			valueColour, _ := ReturnColour("Green", fmt.Sprintf("%v", val.Interface()))
+			fmt.Printf("%v: %v\n", keyColour, valueColour)
+		} else {
+			keyColour := fmt.Sprintf("%v", key.Interface())
+			valueColour := fmt.Sprintf("%v", val.Interface())
+			fmt.Printf("%v: %v\n", keyColour, valueColour)
+		}
 	}
 }
 
@@ -98,6 +107,10 @@ Options: r, g, b have to be 0 or bigger and under 255
 Can error if the values are not the right size
 */
 func PrintRGBColour(r, g, b int, message string) {
+	if !useANSI() {
+		fmt.Print(message)
+		return
+	}
 	fmt.Printf("\033[38;2;%d;%d;%dm%s\033[0m%s", r, g, b, message, reset)
 }
 
@@ -106,6 +119,11 @@ Options: Black, Red, Green, Yellow, Blue, Purple, Cyan, White
 Can error if colour not found
 */
 func PrintBold(colourChoice, message string) {
+	if !useANSI() {
+		fmt.Print(message)
+		return
+	}
+
 	var colourPicked string = bold[strings.ToUpper(string(colourChoice[0]))+colourChoice[1:]]
 
 	fmt.Printf("%s%s%s", colourPicked, message, reset)
@@ -116,6 +134,11 @@ Options: Black, Red, Green, Yellow, Blue, Purple, Cyan, White
 Can error if colour not found
 */
 func PrintUnderline(colourChoice, message string) {
+	if !useANSI() {
+		fmt.Print(message)
+		return
+	}
+
 	var colourPicked string = underline[strings.ToUpper(string(colourChoice[0]))+colourChoice[1:]]
 
 	fmt.Printf("%s%s%s", colourPicked, message, reset)
@@ -126,6 +149,10 @@ Options: Black, Red, Green, Yellow, Blue, Purple, Cyan, White
 Can error if colour not found
 */
 func PrintBackground(colourChoice, message string) {
+	if !useANSI() {
+		fmt.Print(message)
+		return
+	}
 	var colourPicked string = background[strings.ToUpper(string(colourChoice[0]))+colourChoice[1:]]
 
 	fmt.Printf("%s%s%s%s", colourPicked, message, reset, reset)
@@ -136,6 +163,10 @@ Options: Black, Red, Green, Yellow, Blue, Purple, Cyan, White
 Can error if colour not found
 */
 func PrintHighIntensity(colourChoice, message string) {
+	if !useANSI() {
+		fmt.Print(message)
+		return
+	}
 	var colourPicked string = high_Intensity[strings.ToUpper(string(colourChoice[0]))+colourChoice[1:]]
 
 	fmt.Printf("%s%s%s", colourPicked, message, reset)
@@ -146,6 +177,10 @@ Options: Black, Red, Green, Yellow, Blue, Purple, Cyan, White
 Can error if colour not found
 */
 func PrintBoldHighIntensity(colourChoice, message string) {
+	if !useANSI() {
+		fmt.Print(message)
+		return
+	}
 	var colourPicked string = bold_High_Intensity[strings.ToUpper(string(colourChoice[0]))+colourChoice[1:]]
 
 	fmt.Printf("%s%s%s", colourPicked, message, reset)
@@ -156,12 +191,20 @@ Options: Black, Red, Green, Yellow, Blue, Purple, Cyan, White
 Can error if colour not found
 */
 func PrintHighIntensityBackgrounds(colourChoice, message string) {
+	if !useANSI() {
+		fmt.Print(message)
+		return
+	}
 	var colourPicked string = high_Intensity_backgrounds[strings.ToUpper(string(colourChoice[0]))+colourChoice[1:]]
 
 	fmt.Printf("%s%s%s", colourPicked, message, reset)
 }
 
 func PrintByte(message []byte) {
+	if !useANSI() {
+		os.Stdout.Write(message)
+		return
+	}
 	_, err := os.Stdout.Write(message)
 	if err != nil {
 		panic("Couldn't write to standard out")

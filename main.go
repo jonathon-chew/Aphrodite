@@ -3,9 +3,12 @@ package aphrodite
 import (
 	"fmt"
 	"math"
+	"os"
 	"slices"
 	"strconv"
 	"strings"
+
+	"golang.org/x/term"
 )
 
 var bold = map[string]string{
@@ -91,6 +94,11 @@ var reset string = "\x1b[0m"
 Options: Black, Red, Green, Yellow, Blue, Purple, Cyan, White
 */
 func Colour(option, color, message string) error {
+
+	if !useANSI() {
+		fmt.Print(message)
+		return nil
+	}
 
 	acceptableOptions := []string{"Colour", "Color", "Bold", "Underline", "Background", "High_intensity", "Bold_high_intesity", "High_Intensity_backgrounds"}
 	acceptableColours := []string{"Black", "Red", "Green", "Yellow", "Blue", "Purple", "Cyan", "White", "Rainbow"}
@@ -298,4 +306,8 @@ func rainbow(i int) (string, string, string) {
 	return strconv.Itoa(int(math.Sin(f*float64(i)+0)*127 + 128)),
 		strconv.Itoa(int(math.Sin(f*float64(i)+2*math.Pi/3)*127 + 128)),
 		strconv.Itoa(int(math.Sin(f*float64(i)+4*math.Pi/3)*127 + 128))
+}
+
+func useANSI() bool {
+	return term.IsTerminal(int(os.Stdout.Fd()))
 }
