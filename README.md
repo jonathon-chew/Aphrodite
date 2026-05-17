@@ -3,50 +3,53 @@
 <img width="400" src="doc/images/Aphrodite.png" alt="Aphrodite" title="Aphrodite" />
 </p>
 
-A package for beautifying terminal outputs in go
+A package for beautifying terminal output in Go.
 
 ## 🚀 Features
 
-- Formats output strings by passing in 2 extra paraemters 
-- Supports Colour, Bold, Underline, Background, High Intensity, Bold High Intensity and High Intensity Background
-- Serves the result directly out put to the terminal as a drop in 'replacement' for fmt.Printf 
+- Formats output strings by passing in two extra parameters
+- Supports colour, bold, underline, background, high intensity, bold high intensity, and high intensity background
+- Writes formatted output directly to the terminal as a drop-in replacement for `fmt.Printf`
 
 ## 🛠️ Prerequisites
 
-- [Go] Go installed 
+- [Go](https://golang.org/dl/) installed
 
 ## 📁 Setup
 
-1. In your go mod:
+1. In your Go module:
 
   ```bash
-   go mod init
-   go get -u github.com/jonathon-chew/aphrodite@latest
+   go get github.com/jonathon-chew/aphrodite@latest
    ```
-  Should output in your go.mod file should look something like this:
+
+   Your `go.mod` file should then include something like this:
+
   ```bash
   require github.com/jonathon-chew/aphrodite v1.5.2 // indirect
   ```
 
-2. In your go source file where required:
+2. Import it in your Go source file where needed:
 
   ```go
-   import github.com/jonathon-chew/aphrodite
+   import "github.com/jonathon-chew/aphrodite"
   ```
-  or 
+
+   Or alias it:
+
   ```go
    import aphrodite "github.com/jonathon-chew/aphrodite"
   ```
 
-  Depending if you want to name it something different when calling it.
+   Use whichever style fits your codebase.
 
 ## 📂 Output
 
-Coloured/Formatted text in your terminal for convience
+Coloured, formatted text in your terminal.
 
 ## 🧠 Notes
 
-Issues will be tracked in Github issues.
+Issues will be tracked in GitHub Issues.
 
 ## 📜 License
 
